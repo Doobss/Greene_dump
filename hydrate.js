@@ -123,7 +123,7 @@ const countAll = async () => {
   return numDocs.map(res => parseInt(res[0].count))
 }
 
-// hydrate(process.env.RUNS || 50)
+hydrate(process.env.RUNS || 5)
 //  export RUNS=10 node hydrate.js
 module.exports = { runHydration, hydrate }
 
