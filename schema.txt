@@ -1,0 +1,61 @@
+CREATE DATABASE blue_ocean_dev;
+
+CREATE EXTENSION earthdistance CASCADE;
+
+DROP TABLE IF EXISTS base CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS claimables CASCADE;
+DROP TABLE IF EXISTS claimed CASCADE;
+
+CREATE TABLE base (
+  lat DOUBLE PRECISION NOT NULL,
+  lng DOUBLE PRECISION NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT Now(),
+  updated_at TIMESTAMPTZ DEFAULT Now()
+);
+
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  interests INT[],
+  received INT[],
+  donated INT[],
+  donations INT[],
+  rating INT DEFAULT -1,
+  last_name TEXT NOT NULL,
+  user_name TEXT NOT NULL,
+  first_name TEXT NOT NULL,
+  is_charity BOOL DEFAULT false
+) INHERITS (base);
+
+
+CREATE TABLE donations (
+  id SERIAL PRIMARY KEY NOT NULL,
+  posted_by INT DEFAULT -1,
+  pictures TEXT[],
+  tag TEXT[],
+  title TEXT NOT NULL,
+  category TEXT NOT NULL,
+  description TEXT NOT NULL,
+  approved BOOL DEFAULT false,
+  charity_only BOOL DEFAULT false
+) INHERITS (base);
+
+
+CREATE TABLE donated (
+  id SERIAL PRIMARY KEY NOT NULL,
+  posted_by INT DEFAULT -1,
+  pictures TEXT[],
+  tag TEXT[],
+  title TEXT NOT NULL,
+  category TEXT NOT NULL,
+  description TEXT NOT NULL,
+  approved BOOL DEFAULT false,
+  charity_only BOOL DEFAULT false,
+  claimedBy INT DEFAULT -1
+) INHERITS (base);
+
+CREATE INDEX users_id ON users USING hash(id);
+CREATE INDEX claimables_id ON claimables USING hash(id);
+CREATE INDEX claimed_id ON claimed USING hash(id);
+CREATE INDEX base_lat_lng ON base (lat, lng);
