@@ -59,4 +59,3 @@ CREATE INDEX users_id ON users USING hash(id);
 CREATE INDEX claimables_id ON claimables USING hash(id);
 CREATE INDEX claimed_id ON claimed USING hash(id);
 CREATE INDEX base_lat_lng ON base (lat, lng);
-CREATE INDEX base_lat_lng_exp ON base ( point(lng, lat) <@> point(lng, lat) );
