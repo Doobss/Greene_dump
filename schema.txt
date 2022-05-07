@@ -17,8 +17,10 @@ CREATE TABLE base (
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
-  claimed INT[],
-  interested INT[],
+  interests INT[],
+  received INT[],
+  donated INT[],
+  donations INT[],
   rating INT DEFAULT -1,
   last_name TEXT NOT NULL,
   user_name TEXT NOT NULL,

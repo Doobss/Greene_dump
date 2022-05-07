@@ -54,3 +54,4 @@ testFind(Math.round(max * Math.random()))
 //     (point(lng, lat) <@> point(14, 55)) < (10 / 1609.344)
 // ORDER BY
 //  distance;
+

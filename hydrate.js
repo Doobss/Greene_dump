@@ -128,3 +128,43 @@ hydrate(process.env.RUNS || 5)
 module.exports = { runHydration, hydrate }
 
 
+
+
+
+
+function swap(head) {
+
+  function runSwap(node0) {
+    var node1 = node0.next
+    var value0 = node0.value;
+    var value1 = node1 ? node1.value : null;
+    if (value1) {
+      node0.value = value1
+      node1.value = value0
+      if (node1.next) {
+        runSwap(node1.next)
+      }
+    }
+  }
+  runSwap(head)
+  return head
+}
+
+
+
+
+
+function Node(value, next=null) {
+  this.value = value
+  this.next = next
+}
+
+var HEAD = new Node(1)
+HEAD.next = new Node(2)
+HEAD.next.next = new Node(3)
+HEAD.next.next.next = new Node(4)
+HEAD.next.next.next.next = new Node(5)
+
+var tHEAD = swap(JSON.parse(JSON.stringify(HEAD)))
+
+
