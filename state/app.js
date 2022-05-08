@@ -24,7 +24,7 @@ function App() {
         <Route path="Item"   element={<Item   state={state.Item}   />} />
         <Route path="Transactions" element={<Transactions state={state.Transactions} />} />
       </Routes>
-      <Footer><small>{'\u00a9 2022 Kaikoura Range. All rights reserved.'}</small></Footer>
+      <Footer><small>{'\u00a9 2022 Greene Inc. All rights reserved.'}</small></Footer>
     </AppContainer>
   );
 }
