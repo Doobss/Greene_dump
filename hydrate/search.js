@@ -1,31 +1,33 @@
-const { sql } = require('./connect')
+const { sql } = require('../DB/connect')
 
 //  WHERE lat > 10 AND lat < 20 AND lng > 30 AND lng < 45
 
 
 const mileToKm = 0.621371
 
-const findNearby = async (latPosition, lngPosition, range = 10) => {
+const findNearby = async (latPosition, lngPosition, range = 1) => {
   // range = range * mileToKm * 1000
   const local = await sql`
   SELECT *, (point(lng, lat) <@> point(${lngPosition}, ${latPosition})) AS distance
-  FROM claimables
+  FROM donations
   WHERE (point(lng, lat) <@> point(${lngPosition}, ${latPosition})) < (${range})
   ORDER BY distance;`
   return local
 }
 
 
-const testFind = async (id) => {
+const testFind = async () => {
+  let max = await sql`SELECT count(id) FROM users;`
+  max = max[0].count
+  const id = Math.round(max * Math.random())
   const res = await sql`SELECT u.lat, u.lng FROM users AS u WHERE u.id = ${id}`
   const user = res[0]
   const local = await findNearby(user.lat, user.lng)
-  console.log('local',  local.reverse())
+  console.log('local',  local[0])
   console.log('num local',  local.length)
   console.log(`user id: ${id} lat, lng`, user)
 }
-const max = 121139
-testFind(Math.round(max * Math.random()))
+testFind()
 
 
 // `

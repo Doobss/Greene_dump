@@ -1,4 +1,4 @@
-const sql = require('./hydrate')
+const sql = require('./connect')
 
 const getUser = async (userId) => {
   try {
@@ -17,7 +17,7 @@ const getNearby = async (latPosition, lngPosition, range = 10) => {
   try {
     const local = await sql`
     SELECT *, (point(lng, lat) <@> point(${lngPosition}, ${latPosition})) AS distance
-    FROM claimables
+    FROM donations
     WHERE (point(lng, lat) <@> point(${lngPosition}, ${latPosition})) < (${range})
     ORDER BY distance;`
     return local
@@ -34,3 +34,6 @@ const GET = {
 }
 
 module.exports = GET
+
+
+// CREATE INDEX    ON base (point(lng, lat) <@> point(lng, lat))

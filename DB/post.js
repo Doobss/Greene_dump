@@ -19,11 +19,11 @@ POST.user = async (newUser) => {
 }
 
 POST.claimable = async (newDonation) => {
-  return await POST(newDonation, 'claimables')
+  return await POST(newDonation, 'donations')
 }
 
 POST.claimed = async (newClaim) => {
-  return await POST(newClaim, 'claimed')
+  return await POST(newClaim, 'donated')
 }
 
 // const genRand = require('./generator')
