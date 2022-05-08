@@ -15,7 +15,7 @@ function App() {
   console.log('App state', state)
 
   return (
-    <AppContainer className='App' data-testid="app"  >
+    <AppContainer>
       <Routes>
         <Route path="/"      element={<Home   state={state.Home}   />} />
         <Route path="Auth"   element={<Auth   state={state.Auth}   />} />
