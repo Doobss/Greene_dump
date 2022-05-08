@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { DispatchContext } from '../appState/index.js';
+import { Link } from "react-router-dom"
 
 
 function Item({ state }) {
@@ -9,6 +10,10 @@ function Item({ state }) {
   return (
       <PageContainer >
         <h3>Item</h3>
+        <Link to="/">Home</Link>
+        <Link to="/Donate">Donate</Link>
+        <Link to="/Auth">Auth</Link>
+        <Link to="/Browse">Browse</Link>
       </PageContainer>
   );
 }

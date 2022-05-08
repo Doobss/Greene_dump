@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { DispatchContext } from '../appState/index.js';
+import { Link } from "react-router-dom"
 
 
 function Browse({ state }) {
@@ -9,6 +10,9 @@ function Browse({ state }) {
   return (
       <PageContainer >
         <h3>Browse</h3>
+        <Link to="/">Home</Link>
+        <Link to="/Browse">Browse</Link>
+        <Link to="/Auth">Auth</Link>
       </PageContainer>
   );
 }

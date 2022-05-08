@@ -1,15 +1,18 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { DispatchContext } from '../appState/index.js';
-
+import { Link } from "react-router-dom"
 
 function Auth({ state }) {
   const [, dispatch] = useContext(DispatchContext);
 
-  console.log('AUTH state', state)
+  console.log('Auth state', state)
   return (
       <PageContainer >
         <h3>Auth</h3>
+        <Link to="/">Home</Link>
+        <Link to="/Donate">Donate</Link>
+        <Link to="/Item">Item</Link>
       </PageContainer>
   );
 }

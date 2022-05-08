@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { DispatchContext } from '../appState/index.js';
+import { Link } from "react-router-dom"
 
 
 function Donate({ state }) {
@@ -18,7 +19,10 @@ function Donate({ state }) {
   return (
       <PageContainer >
         <h3>Donate</h3>
-        {donate.map((val, ind) => <p key={ind} >{val.toString()}</p>)}
+        <Link to="/">Home</Link>
+        <Link to="/Auth">Auth</Link>
+        <Link to="/Transactions">Transactions</Link>
+        {/* {donate.map((val, ind) => <p key={ind} >{val.toString()}</p>)} */}
       </PageContainer>
   );
 }

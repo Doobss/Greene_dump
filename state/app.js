@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { StateContext } from './appState/index.js';
+import { Routes, Route, Link } from "react-router-dom";
 import Auth from './pages/Auth'
 import Browse from './pages/Browse'
 import Donate from './pages/Donate'
@@ -11,25 +12,27 @@ import Transactions from './pages/Transactions'
 
 function App() {
   const [state] = useContext(StateContext);
-  console.log('app state', state)
+  console.log('App state', state)
 
   return (
-      <AppContainer className='App' data-testid="app"  >
-        <Auth   state={state.Auth}   />
-        <Browse state={state.Browse} />
-        <Donate state={state.Donate} />
-        <Home   state={state.Home}   />
-        <Item   state={state.Item}   />
-        <Transactions state={state.Transactions} />
-        <Footer><small>{'\u00a9 2022 Kaikoura Range. All rights reserved.'}</small></Footer>
-      </AppContainer>
+    <AppContainer className='App' data-testid="app"  >
+      <Routes>
+        <Route path="/"      element={<Home   state={state.Home}   />} />
+        <Route path="Auth"   element={<Auth   state={state.Auth}   />} />
+        <Route path="Browse" element={<Browse state={state.Browse} />} />
+        <Route path="Donate" element={<Donate state={state.Donate} />} />
+        <Route path="Item"   element={<Item   state={state.Item}   />} />
+        <Route path="Transactions" element={<Transactions state={state.Transactions} />} />
+      </Routes>
+      <Footer><small>{'\u00a9 2022 Kaikoura Range. All rights reserved.'}</small></Footer>
+    </AppContainer>
   );
 }
 
 
 const AppContainer = styled.div`
   width: 100%;
-  height: 1000px;
+  height: 700px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -47,7 +50,6 @@ const LoadingContainer = styled.div`
 
 `
 
-
 const Footer = styled.footer`
   height: 2em;
   width: 100%;
@@ -58,3 +60,11 @@ const Footer = styled.footer`
 `
 
 export default App;
+
+
+        // {/* <Auth   state={state.Auth}   />
+        // <Browse state={state.Browse} />
+        // <Donate state={state.Donate} />
+        // <Home   state={state.Home}   />
+        // <Item   state={state.Item}   />
+        // <Transactions state={state.Transactions} /> */}
