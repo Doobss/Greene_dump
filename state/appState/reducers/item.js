@@ -9,7 +9,7 @@ function reducer(state, action) {
   console.log('Item REDUCER', state)
   switch (type) {
 
-    case 'GET_ITEMS':
+    case 'ITEM_INIT':
       newState = { ...state, ...payload };
       return newState;
 

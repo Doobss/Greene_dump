@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import ThemeProvider from './theme';
 import reducer from './reducers/index';
 
 export const DispatchContext = React.createContext([null, () => {}]);
@@ -6,12 +7,12 @@ export const StateContext = React.createContext([{}]);
 
 
 const initAppState = {
-  Auth: { auth: [] },
-  Browse: { browse: [] },
-  Donate: { donate: [] },
-  Home: { home: [] },
-  Item: { item: [] },
-  Transactions: { transactions: [] },
+  Auth: { AuthData: false },
+  Browse: { BrowseData: false },
+  Donate: { DonateData: false },
+  Home: { HomeData: false },
+  Item: { ItemData: false },
+  Transactions: { TransactionsData: false },
   user: { userName: 'Tim' },
 }
 
@@ -22,7 +23,8 @@ const AppContextProvider = ({ children }) => {
   return (
     <DispatchContext.Provider value={[null, dispatch]}>
       <StateContext.Provider value={[state]}>
-        {children}
+        <ThemeProvider />
+          {children}
       </StateContext.Provider>
     </DispatchContext.Provider>
   );

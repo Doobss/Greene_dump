@@ -10,7 +10,7 @@ function reducer(state, action) {
   console.log('Transactions REDUCER', state)
   switch (type) {
 
-    case 'GET_TRANSACTIONS':
+    case 'TRANSACTIONS_INIT':
       newState = { ...state, ...payload };
       return newState;
 

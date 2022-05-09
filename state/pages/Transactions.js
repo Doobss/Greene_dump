@@ -1,16 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { DispatchContext } from '../appState/index.js';
 import { Link } from "react-router-dom"
 
 
-function Transaction({ state }) {
-  const [, dispatch] = useContext(DispatchContext);
+function Transaction({ state, dispatch, init }) {
 
-  console.log('Transaction state', state)
+  useEffect(() => {
+    init()
+    .then(res => {
+      console.log(`\nTransactions API init res`, res)
+      console.log('Transaction state', state)
+      dispatch({
+        type: `TRANSACTIONS_INIT`,
+        payload: res
+      })
+    })
+  }, [])
+
   return (
       <PageContainer >
         <h3>Transaction</h3>
+        <p>{`TransactionsData: ${state.TransactionsData}`} </p>
         <Link to="/">Home</Link>
         <Link to="/Donate">Donate</Link>
         <Link to="/Item">Item</Link>
@@ -22,6 +32,7 @@ function Transaction({ state }) {
 
 const PageContainer = styled.div`
   width: 50%;
+  height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;

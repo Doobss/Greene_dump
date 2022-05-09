@@ -8,7 +8,7 @@ function reducer(state, action) {
   console.log('Auth REDUCER', state)
   switch (type) {
 
-    case 'GET_AUTH':
+    case 'AUTH_INIT':
       newState = { ...state, ...payload };
       return newState;
 

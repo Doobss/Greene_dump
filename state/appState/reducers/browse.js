@@ -8,7 +8,7 @@ function reducer(state, action) {
   console.log('Browse REDUCER', state)
   switch (type) {
 
-    case 'GET_DONATIONS':
+    case 'BROWSE_INIT':
       newState = { ...state, ...payload };
       return newState;
 

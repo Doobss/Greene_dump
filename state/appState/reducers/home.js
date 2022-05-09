@@ -8,7 +8,7 @@ function reducer(state, action) {
   console.log('Home REDUCER', state)
   switch (type) {
 
-    case 'GET_DONATIONS':
+    case 'HOME_INIT':
       newState = { ...state, ...payload };
       return newState;
 

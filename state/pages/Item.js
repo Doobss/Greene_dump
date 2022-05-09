@@ -1,15 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { DispatchContext } from '../appState/index.js';
 import { Link } from "react-router-dom"
 
 
-function Item({ state }) {
-  const [, dispatch] = useContext(DispatchContext);
-  console.log('Item state', state)
+function Item({ state, dispatch, init }) {
+
+  useEffect(() => {
+    init()
+    .then(res => {
+      console.log(`\nItem API init res`, res)
+      console.log('Item state', state)
+      dispatch({
+        type: `ITEM_INIT`,
+        payload: res
+      })
+    })
+  }, [])
+
   return (
       <PageContainer >
         <h3>Item</h3>
+        <p>{`ItemData: ${state.ItemData}`} </p>
         <Link to="/">Home</Link>
         <Link to="/Donate">Donate</Link>
         <Link to="/Auth">Auth</Link>
@@ -21,6 +32,7 @@ function Item({ state }) {
 
 const PageContainer = styled.div`
   width: 50%;
+  height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;

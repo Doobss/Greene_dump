@@ -1,28 +1,30 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { DispatchContext } from '../appState/index.js';
 import { Link } from "react-router-dom"
 
 
-function Donate({ state }) {
-  const [, dispatch] = useContext(DispatchContext);
+function Donate({ state, dispatch, init }) {
   const { donate } = state
 
   useEffect(() => {
-    // dispatch({
-    //   type: 'GET_DONATIONS',
-    //   payload: { donate: [2, 3, 4, 5, 6, 7, 8] }
-    // })
+    init()
+    .then(res => {
+      console.log(`\nDonate API init res`, res)
+      console.log('Donate state', state)
+      dispatch({
+        type: `DONATE_INIT`,
+        payload: res
+      })
+    })
   }, [])
 
-  console.log('Donate state', state)
   return (
       <PageContainer >
         <h3>Donate</h3>
+        <p>{`DonateData: ${state.DonateData}`} </p>
         <Link to="/">Home</Link>
         <Link to="/Auth">Auth</Link>
         <Link to="/Transactions">Transactions</Link>
-        {/* {donate.map((val, ind) => <p key={ind} >{val.toString()}</p>)} */}
       </PageContainer>
   );
 }
@@ -30,6 +32,7 @@ function Donate({ state }) {
 
 const PageContainer = styled.div`
   width: 50%;
+  height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -37,5 +40,10 @@ const PageContainer = styled.div`
   background-color: rgb(20, 20, 20);
 `
 
+    // dispatch({
+    //   type: 'GET_DONATIONS',
+    //   payload: { donate: [2, 3, 4, 5, 6, 7, 8] }
+    // })
+    // {/* {donate.map((val, ind) => <p key={ind} >{val.toString()}</p>)} */}
 
 export default Donate;

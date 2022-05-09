@@ -8,7 +8,7 @@ function reducer(state, action) {
   console.log('Donate REDUCER', state, type, payload)
   switch (type) {
 
-    case 'GET_DONATIONS':
+    case 'DONATE_INIT':
       newState = { ...state, ...payload };
       return newState;
 
