@@ -62,11 +62,3 @@ const Footer = styled.footer`
 `
 
 export default App;
-
-
-        // {/* <Auth   state={state.Auth}   />
-        // <Browse state={state.Browse} />
-        // <Donate state={state.Donate} />
-        // <Home   state={state.Home}   />
-        // <Item   state={state.Item}   />
-        // <Transactions state={state.Transactions} /> */}
