@@ -19,12 +19,60 @@ function App() {
   return (
     <AppContainer >
       <Routes>
-        <Route path="/"      element={<Home   state={state.Home} dispatch={dispatch}  init={api.get.Home} />} />
-        <Route path="Auth"   element={<Auth   state={state.Auth} dispatch={dispatch}  init={api.get.Auth} />} />
-        <Route path="Browse" element={<Browse state={state.Browse} dispatch={dispatch}  init={api.get.Browse} />} />
-        <Route path="Donate" element={<Donate state={state.Donate} dispatch={dispatch}  init={api.get.Donate} />} />
-        <Route path="Item"   element={<Item   state={state.Item} dispatch={dispatch}  init={api.get.Item}  />} />
-        <Route path="Transactions" element={<Transactions state={state.Transactions} dispatch={dispatch}  init={api.get.Transactions} />} />
+        <Route
+          path="/"
+          element={
+          <Home
+            state={state.Home}
+            dispatch={dispatch}
+            init={api.get.Home}
+          />}
+        />
+        <Route
+          path="Auth"
+          element={
+          <Auth
+            state={state.Auth}
+            dispatch={dispatch}
+            init={api.get.Auth}
+          />}
+        />
+        <Route
+          path="Browse"
+          element={
+          <Browse
+            state={state.Browse}
+            dispatch={dispatch}
+            init={api.get.Browse}
+          />}
+        />
+        <Route
+          path="Donate"
+          element={
+          <Donate
+            state={state.Donate}
+            dispatch={dispatch}
+            init={api.get.Donate}
+          />}
+        />
+        <Route
+          path="Item"
+          element={
+          <Item
+            state={state.Item}
+            dispatch={dispatch}
+            init={api.get.Item}
+          />}
+        />
+        <Route
+          path="Transactions"
+          element={
+          <Transactions
+            state={state.Transactions}
+            dispatch={dispatch}
+            init={api.get.Transactions}
+          />}
+        />
       </Routes>
       <Footer><small>{'\u00a9 2022 Greene Inc. All rights reserved.'}</small></Footer>
     </AppContainer>
